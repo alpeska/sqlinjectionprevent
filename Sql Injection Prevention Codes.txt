@@ -1,0 +1,68 @@
+</style>
+
+}
+<div id="frm">
+padding: 7px;
+margin-left: 70%;
+<h1>Login</h1>
+<form name="f1" action= "sql_injection.php" method="POST">
+<p>
+</div>
+<label> UserName: </label>
+<input type="text" id ="user" name
+I
+</p>
+<p>
+</form>
+<label> Password: </label>
+<input type="text" id ="pass" name
+</p>
+<p>
+</p>
+= "user" />
+<input type= "submit" name="submit" id="btn" value = "Login" />
+length: 2,693 lines: 97
+= "pass" />
+
+
+$db_name = "sql_demo";
+$con = mysqli_connect ($host, $user, $password, $db_name);
+if (mysqli_connect_errno()) {
+die ("Failed to connect with MySQL: ". mysqli_connect_error());
+}
+$username = $_POST['user'];
+$password = $_POST['pass'];
+4
+72
+73
+PHP Hypertext Preprocessor file
+//to prevent from mysqli injection
+$username = stripcslashes ($username);
+$password = stripcslashes ($password);
+$username = mysqli_real_escape_string($con,
+$username);
+$password mysqli_real_escape_string ($con, $password); I
+$sql = "select * from login where username = '$username' and password = '
+$password'";
+$result = mysqli_query($con, $sql);
+$count = mysqli_num_rows ($result);
+if ($count > 0) {
+echo "<h1><center> Login successful </center></h1>";
+
+}
+else {
+echo "<h1> Login failed. Invalid username or password.</h1>";
+}
+if ($count>0)
+echo "<div id='GFG'>";
+echo "<table>
+<tr bgcolor='#ccc'>
+<th>Username</th>
+th>Password</th>
+</tr>";
+while ($row = mysqli_fetch_assoc($result))
+{
+echo "<tr align=left style='font-size: 18px;'>";
+echo "<td align=center>" . $row ['username'] . "</td>";
+echo "<td align=left>" $row ['password'] "</td>";
+echo "</tr>";
